@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: nginx
+  labels: 
+    project: expense
+    environment: dev
+spec:
+  containers: 
+  - name: nginx
+    image: nginx
+    resources:
+      # soft limit
+      requests:
+        cpu: 100m
+        memory: 128mi
+      #  this hard limit: should be equal or more than soft limit
+      limits:
+        cpu: 100m
+        memory: 128mi
