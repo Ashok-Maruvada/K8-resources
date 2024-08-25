@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: nginx
+  labels: 
+    project: expense
+    environment: dev
+  annotations:
+    kubernetes.io/created-by: 'Ashok'
+    jenkins_url: http://jenkins-master.goadd.fun
+spec:
+  containers: 
+  - name: nginx
+    image: nginx
