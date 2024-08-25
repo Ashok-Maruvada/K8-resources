@@ -18,10 +18,10 @@ spec:
     # - name: course
     #   valueFrom:
     #     configMapKeyRef:
-    #       name: daws78s
+    #       name: k8cg
     #       key: course
     # - name: trainer
     #   valueFrom:
     #     configMapKeyRef:
-    #       name: daws78s
+    #       name: k8cg
     #       key: trainer
