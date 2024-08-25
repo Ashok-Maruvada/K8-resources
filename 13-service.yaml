@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: clusterip
+spec:
+  selector:
+  # these are lables given to a pod, this service will attach with that pod
+    project: expense
+    environment: dev
+    component: frontend
+  ports:
+  - protocol: TCP
+    port: 80 # this is clusterip port
+    targetport: 80 # this is target port having pod running nginx
