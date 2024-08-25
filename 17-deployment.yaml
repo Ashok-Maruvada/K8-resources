@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment
+  # these labels belongs to replicaset resource
+  labels:
+    app: nginx
+    tier: frontend
+spec:
+# its our need, to maintain number of pods
+  replicas: 3
+  selector:
+  # these labels must be from pod labels
+    matchLabels:
+      project: expense
+      component: frontend
+  # this is pod definition
+  template:
+    metadata:
+      name: nginx
+      labels:
+        project: expense
+        component: frontend
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+
+--------------
+# service will attach with pods created with deployment
+kind: service
+apiVersion: v1
+metadata:
+  name: clusterip
+  labels:
+    project: expense
+spec:
+  selector:
+  # must contain pod labels
+    project: expense
+    component: frontend
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: 80
