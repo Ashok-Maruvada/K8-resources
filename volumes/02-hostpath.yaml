@@ -4,7 +4,7 @@ metadata:
   name: nginx
   labels:
     k8s-app: nginx
-spec:-
+spec:
   selector:
     matchLabels:
       name: nginx-app
